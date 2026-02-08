@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALFAshionmode</title>
+
+  <!-- Fuente Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold titulo">ALFAshionmode</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">☰</button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link">Productos</a></li>
+        <li class="nav-item"><a class="nav-link">Contacto</a></li>
+      </ul>
+      <div class="d-flex align-items-center ms-3">
+        <img src="google.svg" alt="Google" width="28" class="me-2">
+        <img src="instagram.svg" alt="Instagram" width="28" class="me-2">
+        <button id="themeToggle" class="btn btn-outline-light me-2">🌙</button>
+        <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#loginModal">
+          <i class="bi bi-person-circle"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero text-center py-5">
+  <div class="container">
+    <h1 class="display-4 fw-bold">Bienvenido a ALFAshionmode</h1>
+    <p class="lead">Moda moderna, minimalista y exclusiva</p>
+    <a href="#catalogo" class="btn btn-light btn-lg">Ver Productos</a>
+  </div>
+</section>
+
+<!-- PRODUCTOS -->
+<section id="catalogo" class="container py-5">
+  <h2 class="text-center mb-5">Catálogo</h2>
+  <div class="row justify-content-center">
+    <div class="card text-center mb-4" style="width: 14rem;">
+      <img src="diorsauvage.jpg" alt="Perfume Dior Sauvage" class="card-img-top" width="190">
+      <div class="card-body">
+        <h5 class="card-title">Dior Sauvage</h5>
+        <h6 class="card-subtitle mb-2 text-muted">$120.00</h6>
+        <button class="btn btn-purple">Comprar</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer text-center py-3">
+  <p>© 2026 ALFAshionmode</p>
+</footer>
+
+<!-- MODAL LOGIN -->
+<div class="modal fade" id="loginModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark text-light">
+      <div class="modal-header">
+        <h5 class="modal-title">Login / Registro</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+
+        <!-- ALERTAS -->
+        <?php if (isset($_GET['msg'])): ?>
+          <div class="alert alert-<?php echo $_GET['type'] === 'success' ? 'success' : 'danger'; ?> alert-dismissible fade show" role="alert">
+            <?php echo htmlspecialchars($_GET['msg']); ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          </div>
+          <script>
+            // Reabrir modal automáticamente si hay mensaje
+            var loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+            loginModal.show();
+          </script>
+        <?php endif; ?>
+
+        <!-- FORMULARIO -->
+        <form action="auth.php" method="POST">
+          <div class="mb-3">
+            <label for="username" class="form-label">Usuario</label>
+            <input type="text" class="form-control" id="username" name="username" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Correo electrónico</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+          </div>
+          <div class="d-flex justify-content-between">
+            <button type="submit" name="action" value="login" class="btn btn-purple">Login</button>
+            <button type="submit" name="action" value="register" class="btn btn-outline-light">Registro</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
+

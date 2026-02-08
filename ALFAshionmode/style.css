@@ -1,0 +1,165 @@
+/* Tipografías */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Shadows+Into+Light&family=Space+Mono&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #ffffff; /* 60% dominante */
+  color: #35274A; /* texto principal */
+  margin: 0;
+  padding: 0;
+}
+
+/* Paleta */
+:root {
+  --brand: #35274A;   /* 30% color de marca */
+  --accent: #CFCCE6;  /* 10% acento lavanda */
+  --highlight: #792b22; /* toque rojo vino */
+  --neutral: #fafafa; /* gris claro */
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--brand);
+  padding: 0.8rem 1.2rem;
+}
+.navbar .navbar-brand.titulo {
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 1.6rem;
+  color: var(--accent);
+}
+.navbar .nav-link {
+  color: #ffffff;
+  margin: 0 0.5rem;
+}
+.navbar .nav-link.active {
+  font-weight: 600;
+}
+
+/* Navbar sombra */
+.navbar-shadow {
+  box-shadow: 0 10px 30px rgba(0,0,0,.15);
+  transition: box-shadow .3s ease;
+}
+
+/* Íconos SVG en navbar */
+.navbar img {
+  filter: invert(1) brightness(2);
+}
+
+/* Hero */
+.hero {
+  background: linear-gradient(120deg, var(--brand) 70%, var(--accent) 30%);
+  color: #ffffff;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+.hero h1 {
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.hero p {
+  font-size: 1.2rem;
+}
+.hero .btn {
+  background-color: var(--highlight);
+  color: #ffffff;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-weight: 600;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Grid de productos */
+.productos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+/* Contenedor de imagen */
+.img-container {
+  overflow: hidden;
+  border-radius: 12px;
+}
+.img-container > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s ease;
+}
+.img-container:hover > img {
+  transform: scale(1.05) rotate(-1deg); /* pequeña asimetría */
+}
+
+/* Cards */
+.product-card {
+  border: 2px solid var(--accent);
+  background-color: var(--neutral);
+  color: var(--brand);
+  transition: transform .3s ease, box-shadow .3s ease;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.product-card .card-title {
+  font-family: 'Space Mono', monospace;
+  color: var(--brand);
+}
+.product-card .lead {
+  font-weight: 600;
+  color: var(--highlight);
+}
+
+/* Hover de tarjetas */
+.product-card.hovered {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+/* Rating emojis */
+.rating img {
+  margin: 0 4px;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--brand);
+  color: var(--accent);
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Botón acento */
+.btn-purple {
+  background-color: var(--accent);
+  color: var(--brand);
+  border-radius: 6px;
+  padding: 0.6rem 1.2rem;
+}
+.btn-purple:hover {
+  background-color: var(--brand);
+  color: var(--accent);
+}
+
+/* Dark mode */
+body.dark {
+  background-color: var(--brand);
+  color: var(--accent);
+}
+body.dark .hero {
+  background: linear-gradient(120deg, var(--brand) 70%, var(--highlight) 30%);
+  color: var(--accent);
+}
+body.dark .product-card {
+  background-color: var(--brand);
+  color: var(--accent);
+}
+body.dark .footer {
+  background-color: var(--accent);
+  color: var(--brand);
+}
+body.dark .navbar img {
+  filter: invert(1) brightness(2);
+}
