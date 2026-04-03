@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXTMOVIE by BytePhantom - Películas y Series Ilimitadas</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#e50914">
+    <meta name="description" content="NEXTMOVIE clon profesional por BytePhantom - Hacker Edition. Login funcional, carruseles infinitos, modo hacker secreto. ¡Listo para GitHub!">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="#" class="logo">
+                <h1>NEXTMOVIE<span class="glitch" data-text=" by BytePhantom"> by BytePhantom</span></h1>
+            </a>
+            <div class="header-controls">
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Buscar títulos...">
+                    <button id="searchBtn">🔍</button>
+                </div>
+                <div class="profile-selector" id="profileSelector">
+                    <div class="profile-icon">BP</div>
+                    <div class="profile-dropdown">
+                        <div class="profile-item active" data-profile="bytephantom">BytePhantom</div>
+                        <div class="profile-item" data-profile="guest">Invitado</div>
+                        <div class="profile-item" data-profile="hacker">Hacker Mode</div>
+                        <a href="login.html" class="profile-item login-link">Iniciar Sesión</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <main class="hero" id="hero">
+        <video autoplay muted loop class="hero-video" poster="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+            <source src="data:video/mp4;base64,AAAAIGZ0eXBtcDQyAAAAAG1wNDJpc29tAAACAG1wNDJ2aWRl" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Películas y Series Ilimitadas</h1>
+            <p class="hero-subtitle">Por BytePhantom - La edición hacker definitiva. Desbloquea contenido secreto con login.</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" id="playBtn">▶ Reproducir</button>
+                <button class="btn-secondary" id="moreBtn">ℹ Más info</button>
+            </div>
+            <div class="hero-badges">
+                <span>4K • UHD</span>
+                <span>BytePhantom Edition</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- Content Rows -->
+    <div class="content" id="content">
+        <section class="row" data-category="trending">
+            <h2>Ahora Trending</h2>
+            <div class="row-content" id="trending-row">
+                <!-- Cards populated by JS -->
+            </div>
+        </section>
+
+        <section class="row" data-category="top10">
+            <h2>Top 10 México Hoy</h2>
+            <div class="row-content" id="top10-row"></div>
+        </section>
+
+        <section class="row" data-category="action">
+            <h2>Acción y Aventura</h2>
+            <div class="row-content" id="action-row"></div>
+        </section>
+
+        <section class="row secret-row" data-category="hacks" id="hacks-row">
+            <h2>BytePhantom Hacks 🔓 (Login Required)</h2>
+            <div class="row-content"></div>
+        </section>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Iniciar Sesión - BytePhantom</h2>
+            <form id="loginForm">
+                <input type="email" id="email" placeholder="Correo electrónico" required>
+                <input type="password" id="password" placeholder="Contraseña" required>
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+            <p>Prueba: <strong>bytephantom@hack.com</strong> / <strong>hacker</strong></p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 BytePhantom - NEXTMOVIE Hacker Clone. <a href="https://github.com/YOURUSERNAME/nextmovie-bytephantom">GitHub</a> | Ctrl+Shift+H = Hacker Mode</p>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
