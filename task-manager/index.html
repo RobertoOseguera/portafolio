@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Manager Pro - Roberto Oseguera</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-tasks"></i> Task Manager Pro</h1>
+      <p>Gestor de tareas avanzado con drag & drop, LocalStorage y filtros</p>
+    </header>
+
+    <div class="stats">
+      <div class="stat">
+        <span id="total-tasks">0</span>
+        <small>Total</small>
+      </div>
+      <div class="stat">
+        <span id="pending-tasks">0</span>
+        <small>Pendientes</small>
+      </div>
+      <div class="stat">
+        <span id="completed-tasks">0</span>
+        <small>Completadas</small>
+      </div>
+    </div>
+
+    <div class="controls">
+      <input type="text" id="new-task" placeholder="Nueva tarea...">
+      <button id="add-task"><i class="fas fa-plus"></i></button>
+      <select id="filter">
+        <option value="all">Todas</option>
+        <option value="pending">Pendientes</option>
+        <option value="completed">Completadas</option>
+      </select>
+      <button id="clear-completed"><i class="fas fa-trash"></i> Limpiar completadas</button>
+    </div>
+
+    <div class="tasks-container" id="tasks-container">
+      <div class="empty-state">
+        <i class="fas fa-clipboard-list"></i>
+        <p>¡Crea tu primera tarea!</p>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="export-json"><i class="fas fa-download"></i> Export JSON</button>
+      <button id="import-json"><i class="fas fa-upload"></i> Import JSON</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

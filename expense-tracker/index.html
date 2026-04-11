@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker Pro - Roberto Oseguera</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-wallet"></i> Expense Tracker Pro</h1>
+      <p>Controla tus finanzas + Charts + Categorias + Export</p>
+    </header>
+
+    <div class="balance-section">
+      <div class="balance">
+        <h3>Balance Total</h3>
+        <div id="total-balance" class="balance-amount">$0.00</div>
+      </div>
+      <div class="quick-stats">
+        <div class="stat">
+          <span>Ingresos</span>
+          <span id="income">$0</span>
+        </div>
+        <div class="stat">
+          <span>Gastos</span>
+          <span id="expenses" class="negative">$0</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-section">
+      <div class="input-group">
+        <input type="number" id="amount" placeholder="Monto" min="0" step="0.01">
+        <input type="text" id="description" placeholder="Descripción">
+        <select id="category">
+          <option value="food">🍔 Comida</option>
+          <option value="transport">🚗 Transporte</option>
+          <option value="entertainment">🎮 Entretenimiento</option>
+          <option value="shopping">🛍️ Compras</option>
+          <option value="salary">💰 Salario</option>
+          <option value="other">📋 Otros</option>
+        </select>
+        <select id="type">
+          <option value="expense">Gasto</option>
+          <option value="income">Ingreso</option>
+        </select>
+        <button id="add-transaction"><i class="fas fa-plus"></i></button>
+      </div>
+    </div>
+
+    <div class="charts-section">
+      <div class="chart-container">
+        <canvas id="pieChart"></canvas>
+      </div>
+      <div class="recent-transactions">
+        <h3>Recientes</h3>
+        <div id="transactions-list"></div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="export-csv"><i class="fas fa-download"></i> Export CSV</button>
+      <button id="reset-all"><i class="fas fa-trash-alt"></i> Reset Todo</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

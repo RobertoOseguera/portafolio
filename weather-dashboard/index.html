@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Dashboard - Roberto Oseguera</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-cloud-sun"></i> Weather Dashboard</h1>
+      <p>Tiempo real con OpenWeatherMap API + Pronóstico 7 días</p>
+    </header>
+
+    <div class="search-section">
+      <div class="search-box">
+        <input type="text" id="city-input" placeholder="Buscar ciudad... (ej: Mexico City)">
+        <button id="search-btn"><i class="fas fa-search"></i></button>
+      </div>
+      <div id="location-error" class="error"></div>
+    </div>
+
+    <div id="current-weather" class="current-weather hidden">
+      <div class="current-header">
+        <div class="city-info">
+          <h2 id="current-city"></h2>
+          <div id="current-date"></div>
+        </div>
+        <div class="current-temp">
+          <span id="current-temp-value">-</span>
+          <span id="current-temp-unit">°C</span>
+        </div>
+      </div>
+      <div class="current-details">
+        <div class="weather-icon">
+          <i id="current-icon" class="fas"></i>
+        </div>
+        <div class="details-grid">
+          <div class="detail">
+            <span class="detail-label">Sensación</span>
+            <span id="feels-like" class="detail-value">-</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Humedad</span>
+            <span id="humidity" class="detail-value">-</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Viento</span>
+            <span id="wind-speed" class="detail-value">-</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">UV</span>
+            <span id="uv-index" class="detail-value">-</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="forecast" class="forecast hidden">
+      <h3>Pronóstico 7 días</h3>
+      <div class="forecast-grid" id="forecast-grid">
+        <!-- Daily forecasts -->
+      </div>
+    </div>
+
+    <div id="loading" class="loading hidden">
+      <i class="fas fa-spinner fa-spin"></i>
+      <span>Cargando clima...</span>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

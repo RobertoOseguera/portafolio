@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Generator Pro - Roberto Oseguera</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-qrcode"></i> QR Generator Pro</h1>
+      <p>Genera QR codes profesionales + Download + Colors + Logo</p>
+    </header>
+
+    <div class="generator">
+      <div class="input-section">
+        <input type="text" id="qr-text" placeholder="Texto/URL para QR..." value="https://github.com/RobertoOseguera">
+        <div class="options">
+          <label>
+            <input type="color" id="qr-color" value="#000000">
+            <span>Color</span>
+          </label>
+          <label>
+            <input type="range" id="qr-size" min="150" max="500" value="300">
+            <span id="size-value">300px</span>
+          </label>
+          <label>
+            <input type="number" id="qr-error" min="1" max="10" value="4">
+            <span>Error correction</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="qr-output">
+        <canvas id="qr-canvas"></canvas>
+        <div class="qr-actions">
+          <button id="generate-qr"><i class="fas fa-magic"></i> Generar QR</button>
+          <button id="download-qr"><i class="fas fa-download"></i> Download PNG</button>
+          <button id="download-svg"><i class="fas fa-file-code"></i> Download SVG</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="examples">
+      <h3>Ejemplos rápidos</h3>
+      <button onclick="setExample('https://github.com/RobertoOseguera')">GitHub</button>
+      <button onclick="setExample('osegueravazquezroberto@gmail.com')">Email</button>
+      <button onclick="setExample('whatsapp:+52-55-1234-5678')">WhatsApp</button>
+      <button onclick="setExample('WiFi:SSID:MiWiFi;P:Wifi123; T:WPA')">WiFi</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

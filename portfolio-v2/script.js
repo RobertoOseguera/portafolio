@@ -225,7 +225,7 @@ function populateProjects(repos) {
       </div>
       <div class="project-content">
         <h3 class="project-title">${repo.name.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</h3>
-        <p class="project-desc">${repo.description || 'Proyecto increíble sin descripción.'}</p>
+<p class="project-desc">${repo.name === 'password-manager' ? '🔐 Generador de contraseñas seguras + Validator de fuerza (Crypto API, tiempo crack estimado, sugerencias)' : repo.description || 'Proyecto increíble sin descripción.'}</p>
         <div class="project-tech">
           <span class="tech-tag">${repo.language || 'Web'}</span>
           ${repo.stargazers_count ? `<span class="tech-tag"><i class="fab fa-github"></i> ${repo.stargazers_count}</span>` : ''}
