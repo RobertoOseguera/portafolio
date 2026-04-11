@@ -1,0 +1,26 @@
+# Ciberseguridad en mi Portafolio
+
+## Frontend Protegido:
+- **CSP**: Meta tag en head bloquea XSS (agrega: `<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net;">`)
+- No `eval()`, `innerHTML` dinámico sin sanitizar
+- HTTPS en GitHub Pages
+- No forms sin validation
+
+## Backend Flask Secure (`cert-server.py`):
+- Input sanitization (secure_filename)
+- CORS restringido
+- File upload .png/jpg/pdf only
+- SQLite (no SQLi risk)
+- Rate limit: flask-limiter
+
+## Mejoras:
+```python
+from flask_limiter import Limiter
+limiter = Limiter(app, default_limits=["100 per hour"])
+@app.route('/upload', methods=['POST'])
+@limiter.limit("5 per minute")
+```
+
+**Scan**: `npx npm audit` + OWASP ZAP.
+
+¡Web segura! 🔒

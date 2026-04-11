@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Password Manager Pro</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1><i class="fas fa-lock"></i> Password Manager Pro</h1>
+    <p>Genera y valida passwords seguras</p>
+    
+    <!-- Generator -->
+    <section class="card generator">
+      <h2><i class="fas fa-magic"></i> Generador Seguro</h2>
+      <div class="controls">
+        <label>Longitud: <span id="lenVal">16</span>
+          <input type="range" id="length" min="8" max="64" value="16">
+        </label>
+        <div class="checkboxes">
+          <label><input type="checkbox" id="uppercase" checked> <i class="fas fa-arrow-up"></i> Mayúsculas</label>
+          <label><input type="checkbox" id="lowercase" checked> <i class="fas fa-arrow-down"></i> Minúsculas</label>
+          <label><input type="checkbox" id="numbers" checked> <i class="fas fa-hashtag"></i> Números</label>
+          <label><input type="checkbox" id="symbols" checked> <i class="fas fa-at"></i> Símbolos</label>
+        </div>
+        <button onclick="generatePassword()">
+          <i class="fas fa-bolt"></i> Generar Password Segura
+        </button>
+      </div>
+      <div id="generated" class="pass-display">
+        <span>Click generar para empezar</span>
+      </div>
+      <button id="copyBtn" onclick="copyPassword()" class="copy-btn">
+        <i class="fas fa-copy"></i> Copiar Password
+      </button>
+    </section>
+    
+    <!-- Validator -->
+    <section class="card validator">
+      <h2><i class="fas fa-shield-alt"></i> Validador de Seguridad</h2>
+      <div class="form-group">
+        <input type="password" id="validateInput" placeholder="Pega aquí tu password para analizar..." oninput="validatePassword(this.value)">
+      </div>
+      <div class="strength-container">
+        <div class="strength-label">
+          <span id="scoreLabel">Fuerza: 0/100</span>
+          <span id="timeLabel">Tiempo crack: instantáneo</span>
+        </div>
+        <div id="strengthBar" class="strength-bar">
+          <div class="bar-fill"></div>
+        </div>
+      </div>
+      <div id="suggestions" class="suggestions"></div>
+    </section>
+    
+    <!-- Python Backend Link -->
+    <section class="card backend">
+      <h2><i class="fab fa-python"></i> Backend Python (Opcional)</h2>
+      <p>Para guardar passwords hasheadas:</p>
+      <pre><code>python password_server.py
+# POST /save con password → guarda bcrypt</code></pre>
+      <button onclick="testPythonBackend()">Probar Backend</button>
+      <div id="backendResult"></div>
+    </section>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
