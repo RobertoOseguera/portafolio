@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevLinks - Organizador de Enlaces para Desarrolladores</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1><i class="fas fa-link"></i> DevLinks</h1>
+      <p>Organiza todos tus recursos de desarrollo en un solo lugar</p>
+    </header>
+
+    <main class="main-content">
+      <!-- Add Link Form -->
+      <section class="add-section">
+        <h2><i class="fas fa-plus-circle"></i> Agregar Nuevo Enlace</h2>
+        <form id="linkForm" class="link-form">
+          <div class="form-row">
+            <input type="url" id="urlInput" placeholder="https://ejemplo.com" required>
+            <input type="text" id="titleInput" placeholder="Título del enlace" required>
+          </div>
+          <div class="form-row">
+            <select id="categoryInput" required>
+              <option value="">Selecciona categoría</option>
+              <option value="docs">📚 Documentación</option>
+              <option value="tools">🛠️ Herramientas</option>
+              <option value="tutorials">📖 Tutoriales</option>
+              <option value="ui">🎨 UI/UX</option>
+              <option value="apis">🔌 APIs</option>
+              <option value="learning">🎓 Aprendizaje</option>
+              <option value="community">👥 Comunidad</option>
+              <option value="other">📌 Otros</option>
+            </select>
+            <input type="text" id="descInput" placeholder="Descripción breve (opcional)">
+          </div>
+          <button type="submit" class="btn-add">
+            <i class="fas fa-plus"></i> Agregar Enlace
+          </button>
+        </form>
+      </section>
+
+      <!-- Search & Filter -->
+      <section class="filter-section">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" id="searchInput" placeholder="Buscar enlaces...">
+        </div>
+        <div class="category-filter" id="categoryFilter">
+          <button class="filter-btn active" data-category="all">
+            <i class="fas fa-globe"></i> Todos
+          </button>
+          <button class="filter-btn" data-category="docs">
+            <i class="fas fa-book"></i> Docs
+          </button>
+          <button class="filter-btn" data-category="tools">
+            <i class="fas fa-tools"></i> Tools
+          </button>
+          <button class="filter-btn" data-category="tutorials">
+            <i class="fas fa-graduation-cap"></i> Tutoriales
+          </button>
+          <button class="filter-btn" data-category="ui">
+            <i class="fas fa-palette"></i> UI/UX
+          </button>
+          <button class="filter-btn" data-category="apis">
+            <i class="fas fa-plug"></i> APIs
+          </button>
+        </div>
+      </section>
+
+      <!-- Links Grid -->
+      <section class="links-section">
+        <div class="links-header">
+          <h2><i class="fas fa-bookmark"></i> Mis Enlaces <span id="linkCount">(0)</span></h2>
+          <button id="exportBtn" class="btn-export">
+            <i class="fas fa-download"></i> Exportar JSON
+          </button>
+        </div>
+        <div id="linksGrid" class="links-grid">
+          <!-- Links will be populated here -->
+        </div>
+        <div id="emptyState" class="empty-state">
+          <i class="fas fa-link"></i>
+          <h3>No hay enlaces guardados</h3>
+          <p>Agrega tu primer enlace para comenzar</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="fas fa-edit"></i> Editar Enlace</h3>
+          <button class="modal-close" onclick="closeModal()">&times;</button>
+        </div>
+        <form id="editForm" class="edit-form">
+          <input type="hidden" id="editId">
+          <div class="form-group">
+            <label>URL</label>
+            <input type="url" id="editUrl" required>
+          </div>
+          <div class="form-group">
+            <label>Título</label>
+            <input type="text" id="editTitle" required>
+          </div>
+          <div class="form-group">
+            <label>Categoría</label>
+            <select id="editCategory" required></select>
+          </div>
+          <div class="form-group">
+            <label>Descripción</label>
+            <input type="text" id="editDesc">
+          </div>
+          <div class="modal-actions">
+            <button type="button" class="btn-cancel" onclick="closeModal()">Cancelar</button>
+            <button type="submit" class="btn-save"><i class="fas fa-save"></i> Guardar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

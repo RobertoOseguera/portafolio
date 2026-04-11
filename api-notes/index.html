@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Notes - Notas con Marcado y APIs</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h1><i class="fas fa-sticky-note"></i> API Notes</h1>
+        <button id="newNoteBtn" class="btn-new">
+          <i class="fas fa-plus"></i> Nueva Nota
+        </button>
+      </div>
+      
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchNotes" placeholder="Buscar notas...">
+      </div>
+      
+      <div class="notes-list" id="notesList">
+        <!-- Notes will be populated here -->
+      </div>
+      
+      <div class="sidebar-footer">
+        <div class="stats">
+          <span><i class="fas fa-file-alt"></i> <span id="totalNotes">0</span> notas</span>
+          <span><i class="fas fa-code"></i> <span id="totalApis">0</span> APIs</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="editor-container">
+      <div id="welcomeScreen" class="welcome-screen">
+        <div class="welcome-content">
+          <i class="fas fa-code"></i>
+          <h2>Bienvenido a API Notes</h2>
+          <p>Documenta tus notas, integra APIs y practica código</p>
+          <button id="welcomeNewBtn" class="btn-primary">
+            <i class="fas fa-plus"></i> Crear Primera Nota
+          </button>
+        </div>
+        
+        <div class="quick-templates">
+          <h3><i class="fas fa-bolt"></i> Plantillas Rápidas</h3>
+          <div class="templates-grid">
+            <button class="template-card" data-template="api">
+              <i class="fas fa-plug"></i>
+              <span>Documentar API</span>
+            </button>
+            <button class="template-card" data-template="endpoint">
+              <i class="fas fa-network-wired"></i>
+              <span>Endpoint</span>
+            </button>
+            <button class="template-card" data-template="snippet">
+              <i class="fas fa-code"></i>
+              <span>Snippet Code</span>
+            </button>
+            <button class="template-card" data-template="changelog">
+              <i class="fas fa-history"></i>
+              <span>Changelog</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="editorView" class="editor-view hidden">
+        <div class="editor-toolbar">
+          <input type="text" id="noteTitle" placeholder="Título de la nota...">
+          <div class="toolbar-actions">
+            <button id="togglePreview" title="Vista previa">
+              <i class="fas fa-eye"></i>
+            </button>
+            <button id="toggleCode" title="Modo código">
+              <i class="fas fa-code"></i>
+            </button>
+            <button id="copyMarkdown" title="Copiar Markdown">
+              <i class="fas fa-copy"></i>
+            </button>
+            <button id="deleteNote" class="btn-danger" title="Eliminar nota">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        </div>
+        
+        <div class="editor-wrapper">
+          <div class="editor-content">
+            <textarea id="noteContent" placeholder="Escribe tu nota en Markdown...
+
+## Sintaxis
+- **negrita**, *cursiva*, `código`
+- # Encabezados
+- - Listas
+
+## Código
+\`\`\`javascript
+const api = fetch('url');
+\`\`\`
+
+## Endpoint
+\`\`\`
+GET /api/users
+\`\`\`
+"></textarea>
+          </div>
+          <div id="preview" class="preview-panel hidden">
+            <!-- Markdown preview will be rendered here -->
+          </div>
+        </div>
+        
+        <div class="editor-footer">
+          <div class="meta-info">
+            <span id="charCount">0 caracteres</span>
+            <span id="wordCount">0 palabras</span>
+            <span id="lastSaved">Sin guardar</span>
+          </div>
+          <button id="saveNote" class="btn-save">
+            <i class="fas fa-save"></i> Guardar
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- API Tester Panel -->
+    <aside class="api-panel hidden" id="apiPanel">
+      <div class="api-header">
+        <h3><i class="fas fa-terminal"></i> API Tester</h3>
+        <button id="closeApiPanel" class="btn-close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      
+      <div class="api-form">
+        <select id="apiMethod">
+          <option value="GET">GET</option>
+          <option value="POST">POST</option>
+          <option value="PUT">PUT</option>
+          <option value="DELETE">DELETE</option>
+          <option value="PATCH">PATCH</option>
+        </select>
+        <input type="url" id="apiUrl" placeholder="https://api.ejemplo.com/endpoint">
+        <button id="sendRequest" class="btn-send">
+          <i class="fas fa-paper-plane"></i> Enviar
+        </button>
+      </div>
+      
+      <div class="api-headers">
+        <h4>Headers</h4>
+        <div id="headersList">
+          <div class="header-row">
+            <input type="text" placeholder="Key" class="header-key" value="Content-Type">
+            <input type="text" placeholder="Value" class="header-value" value="application/json">
+            <button class="btn-remove-header"><i class="fas fa-minus"></i></button>
+          </div>
+        </div>
+        <button id="addHeader" class="btn-add-row">
+          <i class="fas fa-plus"></i> Agregar Header
+        </button>
+      </div>
+      
+      <div class="api-body" id="apiBodySection">
+        <h4>Body (JSON)</h4>
+        <textarea id="apiBody" placeholder='{"key": "value"}'></textarea>
+      </div>
+      
+      <div class="api-response">
+        <div class="response-header">
+          <h4>Respuesta</h4>
+          <span id="responseStatus"></span>
+        </div>
+        <div class="response-meta">
+          <span id="responseTime"></span>
+          <span id="responseSize"></span>
+        </div>
+        <div class="response-tabs">
+          <button class="tab-btn active" data-tab="body">Body</button>
+          <button class="tab-btn" data-tab="headers">Headers</button>
+        </div>
+        <pre id="responseBody"><code>La respuesta aparecerá aquí...</code></pre>
+      </div>
+    </aside>
+
+    <!-- Floating Action    <!-- Toast -->
+    <div id="toast" class="toast"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
